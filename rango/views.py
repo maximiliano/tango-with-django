@@ -8,7 +8,8 @@ def index(request):
     categories = models.Category.objects.order_by('-likes')[:5]
     for category in categories:
         category.url = category.name.replace(' ', '_')
-    context_dict = {'categories': categories}
+    pages = models.Page.objects.order_by('-views')[:5]
+    context_dict = {'categories': categories, 'pages': pages}
     return render_to_response('rango/index.html', context_dict, context)
 
 
