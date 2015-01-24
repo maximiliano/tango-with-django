@@ -2,7 +2,7 @@ import os
 
 
 def populate():
-    python_category = add_category('Python')
+    python_category = add_category('Python', views=128, likes=64)
 
     add_page(category=python_category,
              title="Official Python Tutorial",
@@ -16,7 +16,7 @@ def populate():
              title="Learn Python in 10 Minutes",
              url="http://www.korokithakis.net/tutorials/python/")
 
-    django_category = add_category("Django")
+    django_category = add_category("Django", views=64, likes=32)
 
     add_page(category=django_category,
              title="Official Django Tutorial",
@@ -30,7 +30,7 @@ def populate():
              title="How to Tango with Django",
              url="http://www.tangowithdjango.com/")
 
-    frame_category = add_category("Other Frameworks")
+    frame_category = add_category("Other Frameworks", views=32, likes=16)
 
     add_page(category=frame_category,
              title="Bottle",
@@ -52,8 +52,9 @@ def add_page(category, title, url, views=0):
     return page
 
 
-def add_category(name):
-    category = Category.objects.get_or_create(name=name)[0]
+def add_category(name, views, likes):
+    category = Category.objects.get_or_create(name=name, views=views,
+                                              likes=likes)[0]
     return category
 
 # Start execution here!
