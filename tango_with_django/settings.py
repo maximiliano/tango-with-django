@@ -1,5 +1,12 @@
 # Django settings for tango_with_django project.
 
+import os
+
+SETTINGS_DIR = os.path.dirname(__file__)
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+TEMPLATES_PATH = os.path.join(PROJECT_PATH, 'templates')
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -108,9 +115,7 @@ ROOT_URLCONF = 'tango_with_django.urls'
 WSGI_APPLICATION = 'tango_with_django.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    TEMPLATES_PATH
 )
 
 INSTALLED_APPS = (
